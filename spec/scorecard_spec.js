@@ -22,25 +22,32 @@ describe('Bowling scorecard', function () {
 
     describe('checking the frame has the correct scores added', function () {
 
-        it('the first 2 shots are added to the frame', function () {
-            scorecard.addScore(8, 1);
+        it('all shots are added to the frame for a no spare or strike game', function () {
+            var i;
+            for (i = 0; i < 10; i++) {
+                scorecard.addScore(8, 1);
+            }
             expect(scorecard.frameArray[1]).toEqual(8);
             expect(scorecard.frameArray[2]).toEqual(1);
-        })
-
-        it('the second 2 shots are added to the frame', function () {
-            scorecard.addScore(8, 1);
-            scorecard.addScore(8, 1);
             expect(scorecard.frameArray[3]).toEqual(8);
             expect(scorecard.frameArray[4]).toEqual(1);
+            expect(scorecard.frameArray[5]).toEqual(8);
+            expect(scorecard.frameArray[6]).toEqual(1);
+            expect(scorecard.frameArray[7]).toEqual(8);
+            expect(scorecard.frameArray[8]).toEqual(1);
+            expect(scorecard.frameArray[9]).toEqual(8);
+            expect(scorecard.frameArray[10]).toEqual(1);
         })
     });
 
     describe('adding scores to total score', function () {
 
-        it('can add the first score to the scorecard', function () {
-            scorecard.addScore(8, 1);
-            expect(scorecard.totalScore).toEqual(9);
+        it('can correctly add up to the tenth score', function () {
+            var i;
+            for (i = 0; i < 10; i++) {
+                scorecard.addScore(8, 1);
+            }
+            expect(scorecard.totalScore).toEqual(90);
         });
     });
 });
