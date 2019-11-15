@@ -18,6 +18,18 @@ describe('Bowling scorecard', function () {
         it('starts with a score of 0', function () {
             expect(scorecard.totalScore).toEqual(0);
         });
+
+        it('starts at frame 1', function () {
+            expect(scorecard.currentFrame).toEqual(1);
+        });
+
+        it('starts with no preceeding spare', function () {
+            expect(scorecard.spare).toBeFalsy();
+        });
+
+        it('starts with no preceeding strike', function () {
+            expect(scorecard.strike).toBeFalsy();
+        });
     });
 
     describe('checking the frame has the correct scores added', function () {
