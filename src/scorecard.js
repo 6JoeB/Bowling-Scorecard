@@ -34,3 +34,12 @@ Scorecard.prototype.addScore = function (firstShot, secondShot) {
         this.strike = false; //resetting the spare and strike values to false
     }
 };
+
+Scorecard.prototype.reset = function () {
+    this.totalScore = 0;
+    this.currentFrameScore = 0;
+    this.currentFrame = 1;
+    this.spare = false;
+    this.strike = false;
+    this.frameArray = ["placeholder"];
+};
