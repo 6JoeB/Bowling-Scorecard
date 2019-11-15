@@ -24,52 +24,53 @@ class Scorecard {
         this.totalScore += this.currentFrameScore; //adds the score from this frame to the total
         this.checkCurrentShotForStrikeOrSpare(firstShot);
     }
-    addScoreToFrame(firstShot, secondShot) {
-        this.frameArray.push(firstShot);
-        this.frameArray.push(secondShot); //adding the first and second bowls to the frame array
-        this.currentFrame += 1; //advancing the current frame value
+};
+addScoreToFrame(firstShot, secondShot) {
+    this.frameArray.push(firstShot);
+    this.frameArray.push(secondShot); //adding the first and second bowls to the frame array
+    this.currentFrame += 1; //advancing the current frame value
+}
+checkForPreviousStrikeOrSpare(firstShot, secondShot) {
+    if (this.strike === true) {
+        this.totalScore += this.currentFrameScore;
+        this.frameArray.push();
     }
-    checkForPreviousStrikeOrSpare(firstShot, secondShot) {
-        if (this.strike === true) {
-            this.totalScore += this.currentFrameScore;
-            this.frameArray.push();
-        }
-        else if (this.spare === true) {
-            this.totalScore += firstShot;
-        } //adding the additional scores from strikes or spares
+    else if (this.spare === true) {
+        this.totalScore += firstShot;
+    } //adding the additional scores from strikes or spares
+}
+checkCurrentShotForStrikeOrSpare(firstShot) {
+    if (firstShot === 10) {
+        this.strike = true; //checking if the score was a strike
     }
-    checkCurrentShotForStrikeOrSpare(firstShot) {
-        if (firstShot === 10) {
-            this.strike = true; //checking if the score was a strike
-        }
-        else if (this.currentFrameScore === 10) {
-            this.spare = true; //checking if the score was a spare
-        }
-        else {
-            this.spare = false;
-            this.strike = false; //resetting the spare and strike values to false
-        }
+    else if (this.currentFrameScore === 10) {
+        this.spare = true; //checking if the score was a spare
     }
-    checkFrameNum(extraShot) {
-    }
-    finalShot(extraShot) {
-        if (this.currentFrame === 10 && this.currentFrameScore === 10) {
-            this.totalScore += extraShot;
-            this.finalMessage = "game over your final score is ${this.totalScore}";
-        }
-        else if (this.currentFrame === 10 && this.currentFrameScore !== 10) {
-            this.finalMessage = "game over your final score is ${this.totalScore}";
-        }
-    }
-    reset() {
-        this.totalScore = 0;
-        this.currentFrameScore = 0;
-        this.currentFrame = 1;
+    else {
         this.spare = false;
-        this.strike = false;
-        this.secondStrike = false;
-        this.frameArray = ["placeholder"];
+        this.strike = false; //resetting the spare and strike values to false
     }
+}
+checkFrameNum(extraShot) {
+}
+finalShot(extraShot) {
+    if (this.currentFrame === 10 && this.currentFrameScore === 10) {
+        this.totalScore += extraShot;
+        this.finalMessage = "game over your final score is ${this.totalScore}";
+    }
+    else if (this.currentFrame === 10 && this.currentFrameScore !== 10) {
+        this.finalMessage = "game over your final score is ${this.totalScore}";
+    }
+}
+reset() {
+    this.totalScore = 0;
+    this.currentFrameScore = 0;
+    this.currentFrame = 1;
+    this.spare = false;
+    this.strike = false;
+    this.secondStrike = false;
+    this.frameArray = ["placeholder"];
+}
 }
 ;
 

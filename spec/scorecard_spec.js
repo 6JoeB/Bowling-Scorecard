@@ -55,7 +55,7 @@ describe('Bowling scorecard', function () {
     describe('adding scores to total score', function () {
 
         // it('can tell if the score entered is greater than 10', function () {
-        //     expect(scorecard.addScore(10, 2, 0)).toEqual("Your score is too high, please try enter again")
+        //     expect(scorecard.addScore(10, 2)).toEqual("Your score is too high, please try enter again")
         // });
 
         it('can correctly add up to the tenth score for 8, 1', function () {
