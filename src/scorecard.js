@@ -10,21 +10,28 @@ function Scorecard() {
 };
 
 Scorecard.prototype.addScore = function (firstShot, secondShot) {
+    this.addScoreToFrame(firstShot, secondShot)
+    this.currentFrameScore = (firstShot + secondShot) // adding the shot scores together to equal total frame score
+    this.checkForPreviousStrikeOrSpare(firstShot, secondShot)
+    this.totalScore += this.currentFrameScore //adds the score from this frame to the total
+    this.checkCurrentShotForStrikeOrSpare(firstShot)
+};
 
+Scorecard.prototype.addScoreToFrame = function (firstShot, secondShot) {
     this.frameArray.push(firstShot)
     this.frameArray.push(secondShot) //adding the first and second bowls to the frame array
     this.currentFrame += 1 //advancing the current frame value
+};
 
-    this.currentFrameScore = (firstShot + secondShot) // adding the shot scores together to equal total frame score
-
+Scorecard.prototype.checkForPreviousStrikeOrSpare = function (firstShot, secondShot) {
     if (this.strike === true) {
         this.totalScore += this.currentFrameScore
     } else if (this.spare === true) {
         this.totalScore += firstShot
     } //adding the additional scores from strikes or spares
+};
 
-    this.totalScore += this.currentFrameScore //adds the score from this frame to the total
-
+Scorecard.prototype.checkCurrentShotForStrikeOrSpare = function (firstShot) {
     if (firstShot === 10) {
         this.strike = true; //checking if the score was a strike
     } else if (this.currentFrameScore === 10) {

@@ -54,12 +54,20 @@ describe('Bowling scorecard', function () {
 
     describe('adding scores to total score', function () {
 
-        it('can correctly add up to the tenth score', function () {
+        it('can correctly add up to the tenth score for 8, 1', function () {
             var i;
             for (i = 0; i < 10; i++) {
                 scorecard.addScore(8, 1);
             }
             expect(scorecard.totalScore).toEqual(90);
+        });
+
+        it('can correctly add up to the tenth score for 10, 0', function () {
+            var i;
+            for (i = 0; i < 10; i++) {
+                scorecard.addScore(10, 0);
+            }
+            expect(scorecard.totalScore).toEqual(300);
         });
     });
 });
