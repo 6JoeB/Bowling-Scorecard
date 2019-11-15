@@ -15,15 +15,24 @@ describe('Bowling scorecard', function () {
         });
 
         it('starts with a score of 0', function () {
-            expect(scorecard.score).toEqual(0);
+            expect(scorecard.totalScore).toEqual(0);
         });
     });
 
-    describe('adding scores', function () {
+    describe('adding scores to total score', function () {
 
         it('can add the first score to the scorecard', function () {
-            scorecard.addScore(5, 5);
-            expect(scorecard.score).toEqual(10);
+            scorecard.addScore(8, 1);
+            expect(scorecard.totalScore).toEqual(9);
         });
+    });
+
+    describe('checking the frame has the correct scores added', function () {
+
+        it('the first 2 shots are added to the frame', function () {
+            scorecard.addScore(8, 1);
+            expect(scorecard.frameArray[1]).toEqual(8);
+            expect(scorecard.frameArray[2]).toEqual(1);
+        })
     });
 });
